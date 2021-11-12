@@ -2,12 +2,12 @@
 Colors
 *******/
 :root {
-    --primary-text: #51475c;
-    --secondary-text: #ab6c82;
-    --primary: #475c7a;
-    --secondary: #fcbb6d;
-    --accent: #d8737f;
-    --white:  #fff;
+    --primary-text: #0c6434;
+    --secondary-text: #0a0700;
+    --primary: #095ccf;
+    --secondary: #df7f0a;
+    --accent: #80168a;
+    --white:  #ffffff;
 }
 
 /*******
@@ -55,6 +55,13 @@ nav {
 .navbar-brand:hover,
 .navbar-brand:focus {
     color: var(--primary-text);
+}
+
+.nav-img {
+    height: 75px;
+    width: 75px;
+    border-radius: 100%;
+    object-fit: cover;
 }
 
 .nav-item a {
