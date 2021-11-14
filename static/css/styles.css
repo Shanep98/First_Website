@@ -62,6 +62,9 @@ nav {
     width: 75px;
     border-radius: 100%;
     object-fit: cover;
+    border-style: solid;
+    border-width: thick;
+    border-color: #030f09;
 }
 
 .nav-item a {
