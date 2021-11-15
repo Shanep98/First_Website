@@ -12,6 +12,7 @@ def index():
 
 @app.route('/add-project', methods=["GET", "POST"])
 def add_project():
+    projects= Project.query.all()
     if request.form:
         new_project = Project(title= request.form['title'], created =datetime.datetime.strptime(request.form['date'], '%Y-%m'),
                     description= request.form['desc'], skills= request.form['skills'],
@@ -19,20 +20,22 @@ def add_project():
         db.session.add(new_project)
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template('projectform.html')
+    return render_template('projectform.html', projects=projects)
 
 
 #displays a non styled page and issues with creating ul for skills
 @app.route('/detail/<id>')
 def detail(id):
+    projects= Project.query.all()
     project = Project.query.get_or_404(id)
     # projects = Project.query.all()
-    return render_template('detail.html', project=project)
+    return render_template('detail.html', project=project, projects=projects)
 
 
-#need to create editproject.html for this to work
+#displays a non styled page...?
 @app.route('/edit/<id>', methods=['GET', 'POST'])
 def edit(id):
+    projects= Project.query.all()
     project = Project.query.get_or_404(id)
     if request.form:
         project.title = request.form['title']
@@ -42,13 +45,13 @@ def edit(id):
         project.link = request.form['github']
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template('editproject.html', project=project)
+    return render_template('editproject.html', project=project, projects=projects)
 
 
 @app.route('/about')
 def about():
-    project = Project.query.all()
-    return render_template('about.html', project=project)
+    projects = Project.query.all()
+    return render_template('about.html', projects=projects)
 
 
 
