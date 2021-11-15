@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import datetime
 
 
 app = Flask(__name__)
@@ -10,7 +11,7 @@ db = SQLAlchemy(app)
 class Project(db.Model):
     id = db.Column('ID', db.Integer, primary_key=True)
     title = db.Column('Title', db.String())
-    created = db.Column('Created', db.DateTime)
+    created = db.Column('Created', db.Date)
     description = db.Column('Description', db.String())
     skills = db.Column('Skills', db.String())
     link = db.Column('Link', db.String())
@@ -23,4 +24,3 @@ class Project(db.Model):
                 Description: {self.description}
                 Skills: {self.skills}
                 Link: {self.link}'''
-                

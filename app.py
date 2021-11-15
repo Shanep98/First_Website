@@ -6,30 +6,49 @@ import datetime
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    projects= Project.query.all()
+    return render_template('index.html', projects=projects)
 
 
 @app.route('/add-project', methods=["GET", "POST"])
 def add_project():
     if request.form:
-        date = request.form["date"].split("-")
-        day = int(request.form['day'])
-        month = int(date[0])
-        year = int(date[1])
-        new_project = Project(title= request.form['title'], created = datetime.datetime(year, month, day),
-                    description= request.form['description'], skills= request.form['skills'],
-                    link= request.form['link'])
-        # project_in_db = session.query(Project).filter(Project.name==row[0]).one_or_none()
-        # if project_in_db == None:
+        new_project = Project(title= request.form['title'], created =datetime.datetime.strptime(request.form['date'], '%Y-%m'),
+                    description= request.form['desc'], skills= request.form['skills'],
+                    link= request.form['github'])
         db.session.add(new_project)
         db.session.commit()
         return redirect(url_for('index'))
     return render_template('projectform.html')
 
 
+#displays a non styled page and issues with creating ul for skills
+@app.route('/detail/<id>')
+def detail(id):
+    project = Project.query.get_or_404(id)
+    # projects = Project.query.all()
+    return render_template('detail.html', project=project)
+
+
+#need to create editproject.html for this to work
+@app.route('/edit/<id>', methods=['GET', 'POST'])
+def edit(id):
+    project = Project.query.get_or_404(id)
+    if request.form:
+        project.title = request.form['title']
+        project.date = datetime.datetime.strptime(request.form['date'], '%Y-%m')
+        project.description = request.form['desc']
+        project.skills = request.form['skills']
+        project.link = request.form['github']
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('editproject.html', project=project)
+
+
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    project = Project.query.all()
+    return render_template('about.html', project=project)
 
 
 
