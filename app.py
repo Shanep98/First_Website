@@ -28,8 +28,8 @@ def add_project():
 def detail(id):
     projects= Project.query.all()
     project = Project.query.get_or_404(id)
-    # projects = Project.query.all()
-    return render_template('detail.html', project=project, projects=projects)
+    skills = project.skills.split(", ")
+    return render_template('detail.html', projects=projects, project=project, skills=skills)
 
 
 #displays a non styled page...?
