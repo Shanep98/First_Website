@@ -2,12 +2,12 @@
 Colors
 *******/
 :root {
-    --primary-text: #0e4627;
+    --primary-text: #c04f03;
     --secondary-text: #0a0700;
-    --primary: #1609ce;
-    --secondary: #da8b14;
+    --primary: #022ce7;
+    --secondary: #0e4627;
     --accent: #80168a;
-    --white:  #e9abab;
+    --white:  #bd7272;
 }
 
 /*******
@@ -504,6 +504,29 @@ Form
 
 #form button[type='submit'] {
     background-color: var(--secondary);
+}
+
+/********************
+EXCEEDS - 404 Page
+********************/
+
+#error_pg {
+    background-color: var(--secondary);
+    position: relative;
+    text-align: center;
+    padding: 5%;
+}
+
+.error-btn {
+    border-radius: 1px;
+    background-color: var(--primary);
+    color: var(--white);
+    text-decoration: none;
+}
+
+.error img {
+    height: 180px;
+    width: 180px;
 }
 
 /********************

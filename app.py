@@ -48,13 +48,23 @@ def edit(id):
     return render_template('editproject.html', project=project, projects=projects)
 
 
+@app.route('/delete/<id>')
+def delete_project(id):
+    project = Project.query.get_or_404(id)
+    db.session.delete(project)
+    db.session.commit()
+    return redirect(url_for('index'))
+
+
 @app.route('/about')
 def about():
     projects = Project.query.all()
     return render_template('about.html', projects=projects)
 
 
-
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html', msg=error), 404    
 
 
 if __name__ == '__main__':
