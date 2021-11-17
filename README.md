@@ -6,14 +6,14 @@ How to run:
 2) Open a termianl and create a virtual environment by running the following code in the terminal
   -For Windows-
   
-  python -m venv env
-  .\env\Scripts\activate
+  "  python -m venv env  "
+  "  .\env\Scripts\activate  "
   
   -For Mac-
   
-  python3 -m venv env
-  source ./env/bin/activate
+  "  python3 -m venv env  "
+  "  source ./env/bin/activate  "
   
 3) install the packages within the 'requirements.txt' file by running the code below
-  pip install -r requirements.txt
+  "  pip install -r requirements.txt  "
 4) run a command for app.py in the terminal and a server will be created for you to run my website locally at http://127.0.0.1:8000/
