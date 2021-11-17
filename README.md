@@ -5,10 +5,12 @@ How to run:
 1) Download the files from the GitHub and open them up on your preferred IDE
 2) Open a termianl and create a virtual environment by running the following code in the terminal
   -For Windows-
+  
   python -m venv env
   .\env\Scripts\activate
   
   -For Mac-
+  
   python3 -m venv env
   source ./env/bin/activate
   
